@@ -10,6 +10,7 @@ public final class Task5 {
     }
 
     final private static char ASCII_SHIFT = '0';
+    final private static int TEN = 10;
 
     private static int[] intToArray(long number) {
         String str = Long.toString(number);
@@ -23,18 +24,18 @@ public final class Task5 {
     private static int arrayToInt(int[] arrNumber) {
         int resultNumber = 0;
         for (int i = 0; i < arrNumber.length; i++) {
-            resultNumber = resultNumber * 10 + arrNumber[i];
+            resultNumber = resultNumber * TEN + arrNumber[i];
         }
         return resultNumber;
     }
 
     private static boolean isPalindrome(long number) {
-        int[] arr_number = intToArray(number);
+        int[] arrNumber = intToArray(number);
         int leftIndex = 0;
-        int rightIndex = arr_number.length - 1;
+        int rightIndex = arrNumber.length - 1;
 
         while (leftIndex < rightIndex) {
-            if (arr_number[leftIndex] != arr_number[rightIndex]) {
+            if (arrNumber[leftIndex] != arrNumber[rightIndex]) {
                 return false;
             }
             ++leftIndex;
@@ -61,12 +62,5 @@ public final class Task5 {
     }
 
     public static void main(String[] args) {
-        LOGGER.info(isPalindromeDescendant(11211230)); // 11211230 -> 2333 -> 56 -> 11
-        LOGGER.info(isPalindromeDescendant(13001120)); // 13001120 -> 4022 ➞ 44
-        LOGGER.info(isPalindromeDescendant(23336014)); // 23336014 -> 5665
-        LOGGER.info(isPalindromeDescendant(11));
-        LOGGER.info(isPalindromeDescendant(10));
-        LOGGER.info(isPalindromeDescendant(23));
-        LOGGER.info(isPalindromeDescendant(1112));
     }
 }

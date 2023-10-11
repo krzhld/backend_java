@@ -2,7 +2,6 @@ package edu.hw1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.Arrays;
 import static java.util.Arrays.sort;
 
 public final class Task6 {
@@ -14,26 +13,31 @@ public final class Task6 {
     final private static int KAPREKAR = 6174;
     final private static int FOUR = 4;
     private static int kaprekarIterations = 0;
+    final private static int TEN = 10;
+    final private static int THOUSAND = 1000;
+    final private static int TEN_THOUSAND = 10000;
 
     private static int doKaprekarProcedure(int number) {
+        int curNumber = number;
         int[] arrayNumber = new int[FOUR];
         for (int i = 1; i <= FOUR; ++i) {
-            arrayNumber[FOUR - i] = number % 10;
-            number /= 10;
+            arrayNumber[FOUR - i] = curNumber % TEN;
+            curNumber /= TEN;
         }
         sort(arrayNumber);
         int max = 0;
         int min = 0;
         for (int i = 0; i < FOUR; ++i) {
-            min = 10 * min + arrayNumber[i];
-            max = 10 * max + arrayNumber[FOUR - 1 - i];
+            min = TEN * min + arrayNumber[i];
+            max = TEN * max + arrayNumber[FOUR - 1 - i];
         }
         return max - min;
     }
 
     static int countK(int number) {
-        if (number <= 1000 | number >= 10000)
+        if (number <= THOUSAND | number >= TEN_THOUSAND) {
             return -1;
+        }
         if (number == KAPREKAR) {
             int answer = kaprekarIterations;
             kaprekarIterations = 0;
@@ -44,8 +48,5 @@ public final class Task6 {
     }
 
     public static void main(String[] args) {
-        LOGGER.info(countK(1000));
-        LOGGER.info(countK(6554));
-        LOGGER.info(countK(1234));
     }
 }

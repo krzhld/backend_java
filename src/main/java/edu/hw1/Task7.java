@@ -9,12 +9,16 @@ public final class Task7 {
     private Task7() {
     }
 
+    private final static int TEN = 10;
+    private final static int TWO = 2;
+
     private static int binaryToDecimal(long decimalNumber) {
+        long curDecimalNumber = decimalNumber;
         int binaryNumber = 0;
         int i = 0;
-        while (decimalNumber != 0) {
-            binaryNumber += (int) (Math.pow(2, i) * (decimalNumber % 10));
-            decimalNumber /= 10;
+        while (curDecimalNumber != 0) {
+            binaryNumber += (int) (Math.pow(TWO, i) * (curDecimalNumber % TEN));
+            curDecimalNumber /= TEN;
             ++i;
         }
         return binaryNumber;
@@ -22,10 +26,10 @@ public final class Task7 {
 
     static int rotateRight(int n, int shift) {
         String strBinary = Integer.toBinaryString(n);
-        shift = shift % strBinary.length();
+        int moduleShift = shift % strBinary.length();
 
-        String suffix = strBinary.substring(strBinary.length() - shift);
-        String prefix = strBinary.substring(0, strBinary.length() - shift);
+        String suffix = strBinary.substring(strBinary.length() - moduleShift);
+        String prefix = strBinary.substring(0, strBinary.length() - moduleShift);
 
         return binaryToDecimal(Long.parseLong(suffix + prefix));
     }
@@ -41,8 +45,5 @@ public final class Task7 {
     }
 
     public static void main(String[] args) {
-        LOGGER.info(rotateRight(1111, 0));
-        //LOGGER.info(rotateLeft(16, 1));
-        //LOGGER.info(rotateLeft(17, 2));
     }
 }

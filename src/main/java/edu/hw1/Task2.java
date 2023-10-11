@@ -6,24 +6,24 @@ import org.apache.logging.log4j.Logger;
 public final class Task2 {
     private final static Logger LOGGER = LogManager.getLogger();
 
+    private final static int TEN = 10;
+
     private Task2() {
     }
 
     static int countDigits(long number) {
-        if (number == 0) {
+        long curNumber = number;
+        if (curNumber == 0) {
             return 1;
         }
         int digits = 0;
-        while (number != 0) {
-            number /= 10;
+        while (curNumber != 0) {
+            curNumber /= TEN;
             ++digits;
         }
         return digits;
     }
 
     public static void main(String[] args) {
-        LOGGER.info(countDigits(4666));
-        LOGGER.info(countDigits(544));
-        LOGGER.info(countDigits(0));
     }
 }

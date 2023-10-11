@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 public final class Task1 {
     private final static Logger LOGGER = LogManager.getLogger();
     private final static int SECONDS_IN_MINUTE = 60;
+
     private Task1() {
     }
 

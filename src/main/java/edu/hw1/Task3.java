@@ -1,8 +1,8 @@
 package edu.hw1;
 
+import java.util.Arrays;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.Arrays;
 
 public class Task3 {
     private final static Logger LOGGER = LogManager.getLogger();
@@ -26,21 +26,7 @@ public class Task3 {
     }
 
     public static void main(String[] args) {
-        int[] a1 = {1, 2, 3, 4};
-        int[] b1 = {0, 6};
-        LOGGER.info(isNestable(a1, b1));
 
-        int[] a2 = {3, 1};
-        int[] b2 = {4, 0};
-        LOGGER.info(isNestable(a2, b2));
-
-        int[] a3 = {9, 9, 8};
-        int[] b3 = {8, 9};
-        LOGGER.info(isNestable(a3, b3));
-
-        int[] a4 = {1, 2, 3, 4};
-        int[] b4 = {2, 3};
-        LOGGER.info(isNestable(a4, b4));
     }
 
 }
