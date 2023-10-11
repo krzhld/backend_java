@@ -22,11 +22,4 @@ public final class Task4 {
 
         return new String(arrChar);
     }
-
-    public static void main(String[] args) {
-        LOGGER.info(fixString("123456"));
-        LOGGER.info(fixString("hTsii  s aimex dpus rtni.g"));
-        LOGGER.info(fixString("badce"));
-        LOGGER.info(fixString(""));
-    }
 }

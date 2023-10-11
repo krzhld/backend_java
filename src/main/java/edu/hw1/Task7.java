@@ -36,14 +36,11 @@ public final class Task7 {
 
     static int rotateLeft(int n, int shift) {
         String strBinary = Integer.toBinaryString(n);
-        shift = shift % strBinary.length();
+        int moduleShift = shift % strBinary.length();
 
-        String suffix = strBinary.substring(shift);
-        String prefix = strBinary.substring(0, shift);
+        String suffix = strBinary.substring(moduleShift);
+        String prefix = strBinary.substring(0, moduleShift);
 
         return binaryToDecimal(Long.parseLong(suffix + prefix));
-    }
-
-    public static void main(String[] args) {
     }
 }

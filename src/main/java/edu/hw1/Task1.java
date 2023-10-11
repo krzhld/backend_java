@@ -19,11 +19,4 @@ public final class Task1 {
         seconds += Long.parseLong(time[0]) * SECONDS_IN_MINUTE;
         return seconds;
     }
-
-    public static void main(String[] args) {
-        LOGGER.info(minutesToSeconds("01:00"));
-        LOGGER.info(minutesToSeconds("13:56"));
-        LOGGER.info(minutesToSeconds("10:60"));
-        LOGGER.info(minutesToSeconds("999:59"));
-    }
 }

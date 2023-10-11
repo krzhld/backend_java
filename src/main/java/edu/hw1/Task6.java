@@ -46,7 +46,4 @@ public final class Task6 {
         ++kaprekarIterations;
         return countK(doKaprekarProcedure(number));
     }
-
-    public static void main(String[] args) {
-    }
 }

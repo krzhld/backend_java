@@ -45,7 +45,7 @@ public final class Task5 {
     }
 
     static boolean isPalindromeDescendant(long number) {
-        if (number <= 10) {
+        if (number <= TEN) {
             return false;
         }
         if (isPalindrome(number)) {
@@ -59,8 +59,5 @@ public final class Task5 {
             newArrNumber[i] = arrNumber[2 * i] + arrNumber[2 * i + 1];
         }
         return isPalindromeDescendant(arrayToInt(newArrNumber));
-    }
-
-    public static void main(String[] args) {
     }
 }

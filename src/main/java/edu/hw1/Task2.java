@@ -23,7 +23,4 @@ public final class Task2 {
         }
         return digits;
     }
-
-    public static void main(String[] args) {
-    }
 }

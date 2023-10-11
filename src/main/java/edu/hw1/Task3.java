@@ -24,9 +24,4 @@ public class Task3 {
 
         return (a1Sorted[0] > a2Sorted[0]) & (a1Sorted[a1Sorted.length - 1] < a2Sorted[a2Sorted.length - 1]);
     }
-
-    public static void main(String[] args) {
-
-    }
-
 }
