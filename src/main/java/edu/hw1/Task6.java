@@ -5,17 +5,17 @@ import org.apache.logging.log4j.Logger;
 import static java.util.Arrays.sort;
 
 public final class Task6 {
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private Task6() {
     }
 
-    final private static int KAPREKAR = 6174;
-    final private static int FOUR = 4;
+    private static final int KAPREKAR = 6174;
+    private static final int FOUR = 4;
     private static int kaprekarIterations = 0;
-    final private static int TEN = 10;
-    final private static int THOUSAND = 1000;
-    final private static int TEN_THOUSAND = 10000;
+    private static final int TEN = 10;
+    private static final int THOUSAND = 1000;
+    private static final int TEN_THOUSAND = 10000;
 
     private static int doKaprekarProcedure(int number) {
         int curNumber = number;

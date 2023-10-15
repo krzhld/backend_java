@@ -2,15 +2,16 @@ package edu.hw1;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.util.Arrays;
 
 public final class Task5 {
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private Task5() {
     }
 
-    final private static char ASCII_SHIFT = '0';
-    final private static int TEN = 10;
+    private static final char ASCII_SHIFT = '0';
+    private static final int TEN = 10;
 
     private static int[] intToArray(long number) {
         String str = Long.toString(number);
@@ -58,6 +59,11 @@ public final class Task5 {
         for (int i = 0; i < newArrNumber.length; ++i) {
             newArrNumber[i] = arrNumber[2 * i] + arrNumber[2 * i + 1];
         }
-        return isPalindromeDescendant(arrayToInt(newArrNumber));
+        String str = Arrays.stream(newArrNumber)
+            .mapToObj(String::valueOf)
+            .reduce((x, y) -> x + "" + y)
+            .get();
+
+        return isPalindromeDescendant(Long.parseLong(str));
     }
 }

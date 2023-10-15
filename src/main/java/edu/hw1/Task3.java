@@ -5,7 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Task3 {
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private Task3() {
 
@@ -16,12 +16,13 @@ public class Task3 {
             return false;
         }
 
-        int[] a1Sorted = a1.clone();
-        int[] a2Sorted = a2.clone();
+        int max_1 = Arrays.stream(a1).max().getAsInt();
+        int min_1 = Arrays.stream(a1).min().getAsInt();
 
-        Arrays.sort(a1Sorted);
-        Arrays.sort(a2Sorted);
+        int max_2 = Arrays.stream(a2).max().getAsInt();
+        int min_2 = Arrays.stream(a2).min().getAsInt();
 
-        return (a1Sorted[0] > a2Sorted[0]) & (a1Sorted[a1Sorted.length - 1] < a2Sorted[a2Sorted.length - 1]);
+        return (min_1 > min_2) & (max_1 < max_2);
     }
+
 }

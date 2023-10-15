@@ -4,25 +4,13 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public final class Task7 {
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private Task7() {
     }
 
-    private final static int TEN = 10;
-    private final static int TWO = 2;
-
-    private static int binaryToDecimal(long decimalNumber) {
-        long curDecimalNumber = decimalNumber;
-        int binaryNumber = 0;
-        int i = 0;
-        while (curDecimalNumber != 0) {
-            binaryNumber += (int) (Math.pow(TWO, i) * (curDecimalNumber % TEN));
-            curDecimalNumber /= TEN;
-            ++i;
-        }
-        return binaryNumber;
-    }
+    private static final int TEN = 10;
+    private static final int TWO = 2;
 
     static int rotateRight(int n, int shift) {
         String strBinary = Integer.toBinaryString(n);
@@ -31,7 +19,7 @@ public final class Task7 {
         String suffix = strBinary.substring(strBinary.length() - moduleShift);
         String prefix = strBinary.substring(0, strBinary.length() - moduleShift);
 
-        return binaryToDecimal(Long.parseLong(suffix + prefix));
+        return Integer.parseInt(suffix + prefix, 2);
     }
 
     static int rotateLeft(int n, int shift) {
@@ -41,6 +29,6 @@ public final class Task7 {
         String suffix = strBinary.substring(moduleShift);
         String prefix = strBinary.substring(0, moduleShift);
 
-        return binaryToDecimal(Long.parseLong(suffix + prefix));
+        return Integer.parseInt(suffix + prefix, 2);
     }
 }

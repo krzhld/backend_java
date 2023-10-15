@@ -33,4 +33,18 @@ public class Task5Test {
         int input = 12344321;
         assertThat(Task5.isPalindromeDescendant(input)).isEqualTo(true);
     }
+
+    @Test
+    @DisplayName("Вложенный массив не в 2 раза меньше изначального. Особый палиндром")
+    void lengthTwoNestedMassiveNoEqualLengthStartMassiveIsDescendantPalindrome() {
+        int input = 4655;
+        assertThat(Task5.isPalindromeDescendant(input)).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("Вложенный массив не в 2 раза меньше изначального. Не особый палиндром")
+    void lengthTwoNestedMassiveNoEqualLengthStartMassiveIsNotDescendantPalindrome() {
+        int input = 8999;
+        assertThat(Task5.isPalindromeDescendant(input)).isEqualTo(false);
+    }
 }

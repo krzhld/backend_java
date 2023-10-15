@@ -4,18 +4,26 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public final class Task8 {
-    private final static Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger();
 
-    final private static int ROWS = 8;
-    final private static int COLS = 8;
-    final private static int ZERO = 0;
-    final private static int ONE = 1;
-    final private static int TWO = 2;
+    private static final int ROWS = 8;
+    private static final int COLS = 8;
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
+    private static final int TWO = 2;
     private static int[][] desk;
 
     private static boolean checkDirection(int col, int row, TypeMoves movement) {
         int shiftHorizontal = movement.getHorizontalShift();
+        if ((col + shiftHorizontal) < 0 | (col + shiftHorizontal) >= COLS) {
+            return false;
+        }
+
         int shiftVertical = movement.getVerticalShift();
+        if ((row + shiftVertical) < 0 | (row + shiftVertical) >= ROWS) {
+            return false;
+        }
+
         return desk[row + shiftVertical][col + shiftHorizontal] == ONE;
     }
 
@@ -49,33 +57,30 @@ public final class Task8 {
     }
 
     private static boolean checkCorners() {
+        boolean isHit = false;
+
         int curColumn = ZERO;
         int curRow = ZERO;
-        boolean isHit = false;
         if (desk[curColumn][curRow] == ONE) {
-            isHit |= checkDirection(curColumn, curRow, TypeMoves.DOWN_RIGHT)
-                | checkDirection(curColumn, curRow, TypeMoves.RIGHT_DOWN);
+            isHit |= checkAllDirections(curColumn, curRow);
         }
 
         curColumn = ZERO;
         curRow = ROWS - ONE;
         if (desk[curColumn][curRow] == ONE) {
-            isHit |= checkDirection(curColumn, curRow, TypeMoves.UP_RIGHT)
-                | checkDirection(curColumn, curRow, TypeMoves.RIGHT_UP);
+            isHit |= checkAllDirections(curColumn, curRow);
         }
 
         curColumn = COLS - ONE;
         curRow = ROWS - ONE;
         if (desk[curColumn][curRow] == ONE) {
-            isHit |= checkDirection(curColumn, curRow, TypeMoves.UP_LEFT)
-                | checkDirection(curColumn, curRow, TypeMoves.LEFT_UP);
+            isHit |= checkAllDirections(curColumn, curRow);
         }
 
         curColumn = COLS - ONE;
         curRow = ZERO;
         if (desk[curColumn][curRow] == ONE) {
-            isHit |= checkDirection(curColumn, curRow, TypeMoves.DOWN_LEFT)
-                | checkDirection(curColumn, curRow, TypeMoves.LEFT_DOWN);
+            isHit |= checkAllDirections(curColumn, curRow);
         }
         return isHit;
     }
