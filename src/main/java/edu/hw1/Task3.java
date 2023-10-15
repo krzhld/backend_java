@@ -16,13 +16,13 @@ public class Task3 {
             return false;
         }
 
-        int max_1 = Arrays.stream(a1).max().getAsInt();
-        int min_1 = Arrays.stream(a1).min().getAsInt();
+        int max1 = Arrays.stream(a1).max().getAsInt();
+        int min1 = Arrays.stream(a1).min().getAsInt();
 
-        int max_2 = Arrays.stream(a2).max().getAsInt();
-        int min_2 = Arrays.stream(a2).min().getAsInt();
+        int max2 = Arrays.stream(a2).max().getAsInt();
+        int min2 = Arrays.stream(a2).min().getAsInt();
 
-        return (min_1 > min_2) & (max_1 < max_2);
+        return (min1 > min2) & (max1 < max2);
     }
 
 }

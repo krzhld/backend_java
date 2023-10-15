@@ -1,8 +1,8 @@
 package edu.hw1;
 
+import java.util.Arrays;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.Arrays;
 
 public final class Task5 {
     private static final Logger LOGGER = LogManager.getLogger();
