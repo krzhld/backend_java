@@ -7,6 +7,7 @@ public class Session {
     private char[] wordChars;
     private int maxAttempts;
     private int currentAttempts;
+    private static final int DEFAULT_MAX_ATTEMPTS = 5;
 
     public Session(String wordToGuess, int maxAttempts) {
         this.wordToGuess = wordToGuess;
@@ -16,7 +17,7 @@ public class Session {
 
     public Session(String wordToGuess) {
         this.wordToGuess = wordToGuess;
-        this.maxAttempts = 5;
+        this.maxAttempts = DEFAULT_MAX_ATTEMPTS;
         this.currentAttempts = 0;
     }
 
