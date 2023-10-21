@@ -1,23 +1,24 @@
 package edu.project1;
 
-sealed interface GuessResult {
+sealed interface GuessMessage {
     String message();
 
-    record Defeat() implements GuessResult {
+    record Defeat() implements GuessMessage {
         @Override
         public String message() {
             return "You lose!\n";
         }
     }
 
-    record Win() implements GuessResult {
+    record Win() implements GuessMessage {
         @Override
         public String message() {
             return "You won!\n";
         }
     }
 
-    record SuccessfulGuess(Session curSession) implements GuessResult {
+    @SuppressWarnings("MultipleStringLiterals")
+    record SuccessfulGuess(Session curSession) implements GuessMessage {
         @Override
         public String message() {
             StringBuilder message = new StringBuilder();
@@ -29,7 +30,8 @@ sealed interface GuessResult {
         }
     }
 
-    record FailedGuess(Session curSession) implements GuessResult {
+    @SuppressWarnings("MultipleStringLiterals")
+    record FailedGuess(Session curSession) implements GuessMessage {
         @Override
         public String message() {
             StringBuilder message = new StringBuilder();

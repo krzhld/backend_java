@@ -7,8 +7,9 @@ public class ConsoleHangman {
     private boolean isStarted;
     private StringBuilder output;
     private static final int MAX_LENGTH_WORD = 20;
-    private static final String WIN_MESSAGE = new GuessResult.Win().message();
-    private static final String DEFEAT_MESSAGE = new GuessResult.Defeat().message();
+    private static final int DEFAULT_MAX_ATTEMPTS = 5;
+    private static final String WIN_MESSAGE = new GuessMessage.Win().message();
+    private static final String DEFEAT_MESSAGE = new GuessMessage.Defeat().message();
 
     public ConsoleHangman(int maxAttempts, Dictionary dictionary, StringBuilder output) {
         this.maxAttempts = maxAttempts;
@@ -18,7 +19,7 @@ public class ConsoleHangman {
     }
 
     public ConsoleHangman(Dictionary dictionary, StringBuilder output) {
-        this(5, dictionary, output);
+        this(DEFAULT_MAX_ATTEMPTS, dictionary, output);
     }
 
     public ConsoleHangman() {
@@ -54,7 +55,7 @@ public class ConsoleHangman {
         return true;
     }
 
-    //@SuppressWarnings("ReturnCount")
+    @SuppressWarnings("ReturnCount")
     public void makeMove(String guess) {
         if (!isStarted) {
             output.append("Game is not started yet!\n");
@@ -70,10 +71,10 @@ public class ConsoleHangman {
             char letter = Character.toLowerCase(guess.charAt(0));
             if (checkLetter(letter)) {
                 openLetter(letter);
-                output.append(new GuessResult.SuccessfulGuess(curSession).message());
+                output.append(new GuessMessage.SuccessfulGuess(curSession).message());
             } else {
                 curSession.incrementAttempts();
-                output.append(new GuessResult.FailedGuess(curSession).message());
+                output.append(new GuessMessage.FailedGuess(curSession).message());
             }
             isFinished();
         }

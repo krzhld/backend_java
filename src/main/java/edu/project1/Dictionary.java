@@ -23,8 +23,8 @@ public class Dictionary {
         if (!word.matches("[a-zA-Z]+")) {
             throw new DictionaryException("Incorrect word!");
         }
-        word = word.trim().toLowerCase();
-        dictionary.add(word);
+        String resultWord = word.trim().toLowerCase();
+        dictionary.add(resultWord);
     }
 
     public String getRandomWord() {
