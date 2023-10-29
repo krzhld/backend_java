@@ -1,8 +1,6 @@
 package edu.hw3;
 
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -10,11 +8,12 @@ public class RomanNumerals {
     private RomanNumerals() {
     }
 
-    private static Map<Integer, String> NUMERALS_ROMAN = null;
+    private static Map<Integer, String> numeralsRoman = null;
     private static final int MAX_VALUE = 4000;
 
+    @SuppressWarnings("MagicNumber")
     private static void initNumeralsRoman() {
-        if (NUMERALS_ROMAN != null) {
+        if (numeralsRoman != null) {
             return;
         }
         Map<Integer, String> numerals = new LinkedHashMap<>();
@@ -32,19 +31,20 @@ public class RomanNumerals {
         numerals.put(4, "IV");
         numerals.put(1, "I");
 
-        NUMERALS_ROMAN = Collections.unmodifiableMap(numerals);
+        numeralsRoman = Collections.unmodifiableMap(numerals);
     }
 
-    public static String convertToRoman(int num) {
+    public static String convertToRoman(int number) {
+        int num = number;
         if (num >= MAX_VALUE || num <= 0) {
             throw new IllegalStateException("Incorrect input number!");
         }
         initNumeralsRoman();
         StringBuilder answer = new StringBuilder();
         while (num > 0) {
-            for (Integer key : NUMERALS_ROMAN.keySet()) {
+            for (Integer key : numeralsRoman.keySet()) {
                 while (num >= key) {
-                    answer.append(NUMERALS_ROMAN.get(key));
+                    answer.append(numeralsRoman.get(key));
                     num -= key;
                 }
             }

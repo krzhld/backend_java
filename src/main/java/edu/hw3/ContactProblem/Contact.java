@@ -1,7 +1,7 @@
 package edu.hw3.ContactProblem;
 
-import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
+import org.jetbrains.annotations.NotNull;
 
 public record Contact(String name, String surname) implements Comparable<Contact> {
 

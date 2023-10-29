@@ -7,6 +7,7 @@ public class ClusteringBrackets {
     private ClusteringBrackets() {
     }
 
+    @SuppressWarnings("MultipleStringLiterals")
     public static List<String> clusterize(String input) {
         if (input == null) {
             throw new NullPointerException("Nullable string!");
