@@ -21,7 +21,7 @@ public class TestGenerator implements Generator {
             grid[i][width - 1] = new Cell(new Coordinate(i, width - 1), Type.WALL);
         }
         for (int j = 0; j < width; j++) {
-            grid[0][j] = new Cell (new Coordinate(0, j), Type.WALL);
+            grid[0][j] = new Cell(new Coordinate(0, j), Type.WALL);
             grid[height - 1][j] = new Cell(new Coordinate(height - 1, j), Type.WALL);
         }
         return new Maze(height, width, grid);

@@ -88,11 +88,13 @@ public class DfsGenerator implements Generator {
     private Coordinate removeWall(Coordinate currentCoordinate, Coordinate neighbourCoordinate, Cell[][] grid) {
         Cell cell;
         if (currentCoordinate.row() == neighbourCoordinate.row()) {
-            Coordinate tempCoordinate = grid[currentCoordinate.row()][(currentCoordinate.col() + neighbourCoordinate.col()) / 2].coordinate();
+            Coordinate tempCoordinate =
+                grid[currentCoordinate.row()][(currentCoordinate.col() + neighbourCoordinate.col()) / 2].coordinate();
             cell = new Cell(tempCoordinate, Type.PASSAGE);
             grid[currentCoordinate.row()][(currentCoordinate.col() + neighbourCoordinate.col()) / 2] = cell;
         } else {
-            Coordinate tempCoordinate = grid[(currentCoordinate.row() + neighbourCoordinate.row()) / 2][currentCoordinate.col()].coordinate();
+            Coordinate tempCoordinate =
+                grid[(currentCoordinate.row() + neighbourCoordinate.row()) / 2][currentCoordinate.col()].coordinate();
             cell = new Cell(tempCoordinate, Type.PASSAGE);
             grid[(currentCoordinate.row() + neighbourCoordinate.row()) / 2][currentCoordinate.col()] = cell;
         }
