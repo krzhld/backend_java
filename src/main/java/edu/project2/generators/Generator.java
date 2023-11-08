@@ -1,6 +1,6 @@
 package edu.project2.generators;
 
-import edu.project2.structures.Maze;
+import edu.project2.pojo.Maze;
 
 public interface Generator {
     Maze generate(int height, int width);

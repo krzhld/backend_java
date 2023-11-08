@@ -1,6 +1,4 @@
-package edu.project2.structures;
-
-import java.util.Objects;
+package edu.project2.pojo;
 
 public record Coordinate(int row, int col) {
     @Override
@@ -16,10 +14,5 @@ public record Coordinate(int row, int col) {
         }
         Coordinate coordinate = (Coordinate) o;
         return row == coordinate.row && col == coordinate.col;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(row, col);
     }
 }

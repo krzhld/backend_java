@@ -1,9 +1,9 @@
 package edu.project2.renderers;
 
-import edu.project2.structures.Cell;
-import edu.project2.structures.Coordinate;
-import edu.project2.structures.Maze;
-import edu.project2.structures.Type;
+import edu.project2.pojo.Cell;
+import edu.project2.pojo.Coordinate;
+import edu.project2.pojo.Maze;
+import edu.project2.pojo.Type;
 import java.util.List;
 
 public class ConsoleRenderer implements Renderer {

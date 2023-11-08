@@ -1,4 +1,4 @@
-package edu.project2.structures;
+package edu.project2.pojo;
 
 import java.util.Objects;
 
@@ -17,10 +17,5 @@ public record Cell(Coordinate coordinate, Type type) {
         Cell cell = (Cell) o;
         return Objects.equals(this.coordinate, cell.coordinate)
             && Objects.equals(this.type, cell.type);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(type, coordinate);
     }
 }

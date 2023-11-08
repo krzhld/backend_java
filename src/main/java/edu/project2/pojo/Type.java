@@ -1,4 +1,4 @@
-package edu.project2.structures;
+package edu.project2.pojo;
 
 public enum Type {
     WALL, PASSAGE
