@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import static java.util.Arrays.stream;
 
 public class AnimalOperations {
     private AnimalOperations() {
@@ -148,14 +149,11 @@ public class AnimalOperations {
     }
 
     public static boolean checkSpidersBitesMoreThatDogs(List<Animal> animals) {
-        Map<Animal.Type, Integer> animalBites = animals
+        Map<Animal.Type, Long> animalBites = animals
             .stream()
-            .collect(Collectors
-                .groupingBy(
-                    Animal::type,
-                    Collectors.reducing(0, v -> (v.bites() ? 1 : 0), Integer::sum)
-                )
-            );
+            .filter(v ->
+                (v.bites() && ((v.type().equals(Animal.Type.DOG)) || (v.type().equals(Animal.Type.SPIDER)))))
+            .collect(Collectors.groupingBy(Animal::type, Collectors.counting()));
 
         return animalBites.get(Animal.Type.SPIDER) > animalBites.get(Animal.Type.DOG);
     }
@@ -164,27 +162,18 @@ public class AnimalOperations {
         return animals
             .stream()
             .flatMap(Collection::stream)
-            .reduce((v1, v2) ->
-                !Objects.equals(v1.type(), Animal.Type.FISH)
-                    ? v2
-                    : !Objects.equals(v2.type(), Animal.Type.FISH)
-                    ? v1
-                    : v1.weight() > v2.weight()
-                    ? v1 : v2)
+            .filter(v -> v.type().equals(Animal.Type.FISH))
+            .reduce((v1, v2) -> v1.weight() > v2.weight() ? v1 : v2)
             .orElse(null);
     }
 
     public static Map<String, Set<ValidationError>> getErrorsByNames(List<Animal> animals) {
-        return animals
+        Map<String, Set<ValidationError>> animalsMap = animals
             .stream()
-            .collect(
-                Collectors.collectingAndThen(
-                    Collectors.toMap(Animal::name, ValidationError::validate),
-                    map -> {
-                        map.values().removeIf(Set::isEmpty);
-                        return map;
-                    }
-                ));
+            .collect(Collectors.toMap(Animal::name, ValidationError::validate));
+
+        animalsMap.values().removeIf(Set::isEmpty);
+        return animalsMap;
     }
 
     public static Map<String, String> getPrintableErrorsByNames(Map<String, Set<ValidationError>> errors) {
