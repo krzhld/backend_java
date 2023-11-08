@@ -3,8 +3,8 @@ package edu.project2.solvers;
 import edu.project2.pojo.Cell;
 import edu.project2.pojo.Coordinate;
 import edu.project2.pojo.Maze;
-import edu.project2.pojo.Type;
 import edu.project2.pojo.Pair;
+import edu.project2.pojo.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +12,7 @@ import java.util.Random;
 public class DfsSolver implements Solver {
     private final static Random RANDOMIZER = new Random();
     private final static Pair[] NEIGHBOUR =
-        {new Pair(0, -1), new Pair(-1, 0), new Pair(0,1), new Pair(1,0) };
+        {new Pair(0, -1), new Pair(-1, 0), new Pair(0, 1), new Pair(1, 0)};
 
     @Override
     public List<Coordinate> solve(Maze maze, Coordinate startCoordinate, Coordinate endCoordinate) {
@@ -33,7 +33,8 @@ public class DfsSolver implements Solver {
         Coordinate endCoordinate,
         Cell[][] grid,
         boolean[][] visited,
-        List<Coordinate> answer) {
+        List<Coordinate> answer
+    ) {
         if (currentCoordinate.equals(endCoordinate)) {
             answer.add(currentCoordinate);
             return true;

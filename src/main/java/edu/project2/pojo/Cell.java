@@ -3,6 +3,7 @@ package edu.project2.pojo;
 import java.util.Objects;
 
 public record Cell(Coordinate coordinate, Type type) {
+    @SuppressWarnings("EqualsHashCode")
     @Override
     public boolean equals(Object o) {
         if (this == o) {

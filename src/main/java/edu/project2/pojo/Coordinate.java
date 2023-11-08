@@ -1,6 +1,7 @@
 package edu.project2.pojo;
 
 public record Coordinate(int row, int col) {
+    @SuppressWarnings("EqualsHashCode")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
