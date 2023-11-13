@@ -1,6 +1,5 @@
 package edu.hw5.task8;
 
-import edu.hw5.task7.RegexesFor01Alphabet;
 import java.util.regex.Pattern;
 
 public class RegexesFor01AlphabetExtra {
