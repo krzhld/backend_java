@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class ComputerClub {
+    private ComputerClub() {
+    }
 
     private static final int SECONDS_IN_MINUTE = 60;
 

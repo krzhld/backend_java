@@ -9,6 +9,7 @@ public class YMDParser extends Parser {
     private static final Pattern DATE_PATTERN =
         Pattern.compile("^(\\d{3,4})-([1-9]|1[0-2])-([1-9]|[12]\\d|3[01])$");
 
+    @SuppressWarnings("MagicNumber")
     @Override
     public LocalDate parse(String date) {
         Matcher matcher = DATE_PATTERN.matcher(date);

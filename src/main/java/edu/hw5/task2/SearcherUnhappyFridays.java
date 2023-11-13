@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearcherUnhappyFridays {
+    private SearcherUnhappyFridays() {
+
+    }
 
     private static final int FRIDAY = 5;
     private static final int UNHAPPY_DAY = 13;
@@ -23,16 +26,17 @@ public class SearcherUnhappyFridays {
         return unhappyFridays;
     }
 
+    @SuppressWarnings("ParameterAssignment")
     public static LocalDate getNearestUnhappyFriday(LocalDate date) {
-        return date.with
-            (TemporalAdjusters.ofDateAdjuster
-                (v -> {
-                        v = v.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
-                        while (v.getDayOfMonth() != UNHAPPY_DAY) {
-                            v = v.plusWeeks(1);
-                        }
-                        return v;
+        return date.with(
+            TemporalAdjusters.ofDateAdjuster(
+                v -> {
+                    v = v.with(TemporalAdjusters.next(DayOfWeek.FRIDAY));
+                    while (v.getDayOfMonth() != UNHAPPY_DAY) {
+                        v = v.plusWeeks(1);
                     }
-                ));
+                    return v;
+                }
+            ));
     }
 }

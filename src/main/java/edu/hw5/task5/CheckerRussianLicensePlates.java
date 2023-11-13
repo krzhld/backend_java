@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CheckerRussianLicensePlates {
+    private CheckerRussianLicensePlates() {
+
+    }
 
     private static final String ALLOWED_LETTERS = "[АВЕКМНОРСТУХ]";
 

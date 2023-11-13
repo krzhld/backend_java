@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SearcherSubsequence {
+    private SearcherSubsequence() {
+
+    }
 
     public static boolean isThereSubsequenceInSequence(String subSequence, String sequence) {
         StringBuilder regex = new StringBuilder(".*");
