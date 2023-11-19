@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public record Request(HttpMethod method, String urn, String protocol) {
 
+    @SuppressWarnings("EqualsHashCode")
     @Override public boolean equals(Object o) {
         if (this == o) {
             return true;
