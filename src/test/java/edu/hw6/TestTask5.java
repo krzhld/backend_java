@@ -1,21 +1,26 @@
 package edu.hw6;
 
-import static edu.hw6.task5.HackerNews.hackerNewTopStories;
-import static edu.hw6.task5.HackerNews.news;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import edu.hw6.task5.HackerNews;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Arrays;
 
 public class TestTask5 {
     @Test
-    void test1() throws URISyntaxException, IOException, InterruptedException {
-        long[] longs = hackerNewTopStories();
-        System.out.println(Arrays.toString(longs));
+    public void testHackerNewsTopStories() throws URISyntaxException, IOException, InterruptedException {
+        long[] news = HackerNews.hackerNewTopStories();
+
+        assertThat(news).isNotEmpty();
     }
 
     @Test
-    void test2() throws URISyntaxException, IOException, InterruptedException {
-        System.out.println(news(37570036));
+    public void testNews() throws URISyntaxException, IOException, InterruptedException {
+        long storyId = 37570037;
+
+        String title = HackerNews.news(storyId);
+
+        String expectedResult = "JDK 21 Release Notes";
+        assertThat(title).isEqualTo(expectedResult);
     }
 }

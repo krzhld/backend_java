@@ -8,7 +8,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOf
 
 public class TestTask1 {
     @Test
-    void test1() throws IOException {
+    void testDiskMap() throws IOException {
         DiskMap diskMapObj = new DiskMap();
         diskMapObj.saveData("111", "121");
         diskMapObj.saveData("112", "122");
@@ -19,7 +19,7 @@ public class TestTask1 {
     }
 
     @Test
-    void test2() throws IOException {
+    void testDiskMapCollision() throws IOException {
         DiskMap diskMapObj = new DiskMap();
         diskMapObj.saveData("111", "121");
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> diskMapObj.saveData("111", "122"));
