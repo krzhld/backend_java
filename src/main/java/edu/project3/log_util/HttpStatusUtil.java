@@ -3,6 +3,7 @@ package edu.project3.log_util;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("MagicNumber")
 public class HttpStatusUtil {
     private HttpStatusUtil() {
     }

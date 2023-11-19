@@ -12,6 +12,7 @@ public record LogEntry(String remoteAddress,
                             String httpReferer,
                             String httpUserAgent) {
 
+    @SuppressWarnings("EqualsHashCode")
     @Override public boolean equals(Object o) {
         if (this == o) {
             return true;

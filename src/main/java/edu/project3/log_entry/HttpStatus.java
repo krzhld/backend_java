@@ -23,6 +23,7 @@ public class HttpStatus {
         return this.exact;
     }
 
+    @SuppressWarnings("MagicNumber")
     public StatusType getType() {
         if (type == null) {
             type = switch (this.exact % 100) {
@@ -42,6 +43,7 @@ public class HttpStatus {
         return this.exact + ": " + HttpStatusUtil.getByCode(this.exact);
     }
 
+    @SuppressWarnings("EqualsHashCode")
     @Override
     public boolean equals(Object o) {
         if (this == o) {
