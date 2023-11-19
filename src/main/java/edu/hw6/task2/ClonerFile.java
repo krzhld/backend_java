@@ -10,6 +10,7 @@ public class ClonerFile {
 
     }
 
+    @SuppressWarnings("ReturnCount")
     public static void cloneFile(Path path) throws IOException {
         File file = new File(path.toUri());
         if (file.exists()) {

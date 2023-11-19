@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+@SuppressWarnings("MultipleStringLiterals")
 public class DiskMap {
     private final static Logger LOGGER = LogManager.getLogger();
 
@@ -25,16 +26,16 @@ public class DiskMap {
     }
 
     private Map<String, String> diskMap;
-    private final String FILE_DISK_MAP = "diskMap.txt";
+    private final String fileDiskMap = "diskMap.txt";
 
     private void initFile() throws IOException {
-        File file = new File("diskMap.txt");
+        File file = new File(fileDiskMap);
         try {
             if (file.createNewFile()) {
                 LOGGER.info("File diskMap.txt is created!");
             } else {
                 LOGGER.info("File already exists! Rewriting.");
-                Files.newBufferedWriter(Path.of(FILE_DISK_MAP), StandardOpenOption.TRUNCATE_EXISTING);
+                Files.newBufferedWriter(Path.of(fileDiskMap), StandardOpenOption.TRUNCATE_EXISTING);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -47,7 +48,7 @@ public class DiskMap {
         } else {
             diskMap.put(key, data);
             try {
-                FileOutputStream fileOutputStream = new FileOutputStream(FILE_DISK_MAP, true);
+                FileOutputStream fileOutputStream = new FileOutputStream(fileDiskMap, true);
                 StringBuilder stringBuilder = new StringBuilder(key);
                 stringBuilder.append(":").append(data).append("\n");
                 fileOutputStream.write(stringBuilder.toString().getBytes());
@@ -64,7 +65,7 @@ public class DiskMap {
             return "";
         } else {
             try {
-                File file = new File(FILE_DISK_MAP);
+                File file = new File(fileDiskMap);
                 FileReader fileReader = new FileReader(file);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
                 String line = bufferedReader.readLine();

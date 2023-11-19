@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import static java.net.http.HttpClient.newHttpClient;
 import static java.time.temporal.ChronoUnit.SECONDS;
 
+@SuppressWarnings("MultipleStringLiterals")
 public class HackerNews {
     private HackerNews() {
 
@@ -20,22 +21,24 @@ public class HackerNews {
     private static final String ENDPOINT_TOP_STORIES = "https://hacker-news.firebaseio.com/v0/topstories.json";
     private static final String ENDPOINT_NUMBER_STORY = "https://hacker-news.firebaseio.com/v0/item/#.json";
 
+    private final static int TIMEOUT_SEC = 10;
+
     public static long[] hackerNewTopStories() throws URISyntaxException, IOException, InterruptedException {
         try {
             var request = HttpRequest.newBuilder()
                 .uri(new URI(ENDPOINT_TOP_STORIES))
                 .GET()
-                .timeout(Duration.of(10, SECONDS))
+                .timeout(Duration.of(TIMEOUT_SEC, SECONDS))
                 .build();
 
             var response = newHttpClient()
                 .send(request, HttpResponse.BodyHandlers.ofString());
             var body = response.body();
 
-            return Arrays.stream
-                    (body.substring(1, body.length() - 1)
+            return Arrays.stream(
+                    body.substring(1, body.length() - 1)
                         .split(",")
-                    )
+                )
                 .map(String::trim)
                 .mapToLong(Long::parseLong)
                 .toArray();
@@ -58,7 +61,7 @@ public class HackerNews {
             var request = HttpRequest.newBuilder()
                 .uri(new URI(stringBuilder.toString()))
                 .GET()
-                .timeout(Duration.of(10, SECONDS))
+                .timeout(Duration.of(TIMEOUT_SEC, SECONDS))
                 .build();
 
             var response = newHttpClient()

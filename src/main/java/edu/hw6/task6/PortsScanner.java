@@ -1,18 +1,12 @@
 package edu.hw6.task6;
 
-import java.io.CharArrayReader;
 import java.io.IOException;
 import java.net.DatagramSocket;
-import java.net.MalformedURLException;
 import java.net.ServerSocket;
-import java.net.URL;
-import java.nio.ByteBuffer;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.random.RandomGenerator;
 
+@SuppressWarnings("EmptyBlock")
 public class PortsScanner {
     public PortsScanner() {
         busyPorts = new ArrayList<>();
@@ -61,10 +55,5 @@ public class PortsScanner {
             .append(v.info())
             .append("\n"));
         return stringBuilder.toString();
-    }
-
-    public static void main(String[] args) {
-        PortsScanner portsScanner = new PortsScanner();
-        System.out.print(portsScanner.printOccupiedPorts());
     }
 }

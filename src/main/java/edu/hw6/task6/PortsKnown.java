@@ -3,6 +3,7 @@ package edu.hw6.task6;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings({"MagicNumber", "MultipleStringLiterals"})
 public class PortsKnown {
     private PortsKnown() {
     }
