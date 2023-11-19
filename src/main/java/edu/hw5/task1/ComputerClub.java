@@ -2,31 +2,29 @@ package edu.hw5.task1;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ComputerClub {
     private ComputerClub() {
     }
 
-    private static final int SECONDS_IN_MINUTE = 60;
-
     public static TimeHoursMinutes countAverageTimeSpent(String[] durations) {
-        long totalMinutes = 0;
+        Duration duration = Duration.ZERO;
         for (String curDuration : durations) {
             String[] splitTime = curDuration.split(" - ");
-            LocalDateTime formattedTimeFrom = parseStringToDateTime(splitTime[0]);
-            LocalDateTime formattedTimeTo = parseStringToDateTime(splitTime[1]);
-            totalMinutes += Duration.between(formattedTimeFrom, formattedTimeTo).toMinutes();
+
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd, HH:mm");
+
+            LocalDateTime formattedTimeFrom = LocalDateTime.parse(splitTime[0], dateTimeFormatter);
+            LocalDateTime formattedTimeTo = LocalDateTime.parse(splitTime[1], dateTimeFormatter);
+
+            duration = duration.plus(Duration.between(formattedTimeFrom, formattedTimeTo));
         }
         int numberVisitors = durations.length;
-        var averageTotalMinutes = totalMinutes / numberVisitors;
-        return new TimeHoursMinutes(
-            (int) averageTotalMinutes / SECONDS_IN_MINUTE,
-            (int) averageTotalMinutes % SECONDS_IN_MINUTE
-        );
-    }
+        duration = duration.dividedBy(numberVisitors);
 
-    private static LocalDateTime parseStringToDateTime(String str) {
-        String formattedStr = str.replace(", ", "T") + ":00";
-        return LocalDateTime.parse(formattedStr);
+        long hours = duration.toHours();
+        long minutes = duration.minusHours(duration.toHours()).toMinutes();
+        return new TimeHoursMinutes(hours, minutes);
     }
 }
