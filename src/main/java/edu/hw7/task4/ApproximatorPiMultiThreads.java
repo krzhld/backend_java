@@ -1,11 +1,11 @@
 package edu.hw7.task4;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ApproximatorPiMultiThreads {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -38,6 +38,7 @@ public class ApproximatorPiMultiThreads {
         return (double) (FOUR * numberPointsInCircle) / numberIterations;
     }
 
+    @SuppressWarnings("MagicNumber")
     public String getMeasurements() {
         long start;
         long end;

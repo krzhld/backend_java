@@ -2,6 +2,7 @@ package edu.hw7.task3;
 
 import java.util.Objects;
 
+@SuppressWarnings("EqualsHashCode")
 public record Person(int id, String name, String address, String phoneNumber) {
     @Override
     public boolean equals(Object o) {
