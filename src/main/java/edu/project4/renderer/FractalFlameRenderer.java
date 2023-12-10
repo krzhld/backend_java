@@ -39,6 +39,7 @@ public class FractalFlameRenderer implements IFractalFlameRenderer {
         }
     }
 
+    @SuppressWarnings("ParameterAssignment")
     private void iteratePoint(FractalImage image, Point p, int iterationPerSample) {
         int height = image.height;
         int width = image.width;

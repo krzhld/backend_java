@@ -9,9 +9,9 @@ import edu.project4.transformation.ITransformation;
 import edu.project4.transformation.SphericalTransformation;
 import edu.project4.util.Randomizer;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.Random;
 
 @SuppressWarnings("MagicNumber")
 public class FractalMultiThreadedRenderer implements IFractalFlameRenderer {
