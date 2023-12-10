@@ -3,6 +3,7 @@ package edu.hw9.task1;
 import java.util.Objects;
 import java.util.concurrent.locks.ReentrantLock;
 
+@SuppressWarnings("EqualsHashCode")
 public class Statistics {
 
     private final String name;
