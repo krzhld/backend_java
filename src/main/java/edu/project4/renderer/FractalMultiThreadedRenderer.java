@@ -8,12 +8,12 @@ import edu.project4.transformation.AffineTransformation;
 import edu.project4.transformation.ITransformation;
 import edu.project4.transformation.SphericalTransformation;
 import edu.project4.util.Randomizer;
-
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.Random;
 
+@SuppressWarnings("MagicNumber")
 public class FractalMultiThreadedRenderer implements IFractalFlameRenderer {
     private final Random randomizer = new Random();
     private final ArrayList<AffineTransformation> affineTransformations = new ArrayList<>();
@@ -38,9 +38,9 @@ public class FractalMultiThreadedRenderer implements IFractalFlameRenderer {
         for (int sample = 0; sample < samples; ++sample) {
             double x = Randomizer.nextDouble(xMin, xMax);
             double y = Randomizer.nextDouble(yMin, yMax);
-            Point P = new Point(x, y);
+            Point p = new Point(x, y);
 
-            service.submit(new IterationThread(image, iterationsPerSample, P));
+            service.submit(new IterationThread(image, iterationsPerSample, p));
         }
 
         service.shutdown();
@@ -51,7 +51,7 @@ public class FractalMultiThreadedRenderer implements IFractalFlameRenderer {
         private int iterationPerSample;
         private Point p;
 
-        public IterationThread(FractalImage image, int iterationPerSample, Point p) {
+        IterationThread(FractalImage image, int iterationPerSample, Point p) {
             this.image = image;
             this.iterationPerSample = iterationPerSample;
             this.p = p;
@@ -69,14 +69,14 @@ public class FractalMultiThreadedRenderer implements IFractalFlameRenderer {
 
                     Point finalP = nonLinealTransformation.apply(p);
 
-                    double Xf = finalP.x();
-                    double Yf = finalP.y();
+                    double xf = finalP.x();
+                    double yf = finalP.y();
 
-                    int newX = width - (int) (((xMax - Xf) / (xMax - xMin)) * width);
-                    int newY = height - (int) (((yMax - Yf) / (yMax - yMin)) * height);
+                    int newX = width - (int) (((xMax - xf) / (xMax - xMin)) * width);
+                    int newY = height - (int) (((yMax - yf) / (yMax - yMin)) * height);
 
-                    if (step < 0 || Xf < xMin || Xf > xMax
-                        || Yf < yMin || Yf > yMax
+                    if (step < 0 || xf < xMin || xf > xMax
+                        || yf < yMin || yf > yMax
                         || newX >= width || newY >= height) {
                         continue;
                     }

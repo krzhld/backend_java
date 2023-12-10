@@ -2,6 +2,7 @@ package edu.project4.transformation;
 
 import edu.project4.pojo.Point;
 
+@SuppressWarnings("MagicNumber")
 public class SphericalTransformation implements ITransformation {
     @Override
     public Point apply(Point point) {

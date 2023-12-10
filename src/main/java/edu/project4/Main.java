@@ -8,8 +8,17 @@ import edu.project4.renderer.FractalMultiThreadedRenderer;
 import edu.project4.renderer.IFractalFlameRenderer;
 import edu.project4.util.ImageProcessor;
 import edu.project4.util.LogarithmicGammaCorrectionOfImage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+@SuppressWarnings({"MagicNumber", "MultipleStringLiterals"})
 public class Main {
+    private Main() {
+
+    }
+
+    private static final Logger LOGGER = LogManager.getLogger();
+
     public static void main(String[] args) {
         ImageProcessor imageProcessor = new LogarithmicGammaCorrectionOfImage();
 
@@ -21,7 +30,7 @@ public class Main {
         fractalFlameGenerator.render(image, 1000, 500);
         imageProcessor.process(image);
         Display.createImage(image, "C:\\Users\\krzhld", "image_without_multithread", ImageFormat.BMP);
-        System.out.println("Result without multiThread: "
+        LOGGER.info("Result without multiThread: "
             + (System.currentTimeMillis() - startTime));
 
         // With MultiThread
@@ -32,7 +41,7 @@ public class Main {
         fractalFlameGenerator.render(image, 1000, 500);
         imageProcessor.process(image);
         Display.createImage(image, "C:\\Users\\krzhld", "image_with_multithread", ImageFormat.BMP);
-        System.out.println("Result with multiThread: "
+        LOGGER.info("Result with multiThread: "
             + (System.currentTimeMillis() - startTime));
     }
 }

@@ -6,14 +6,12 @@ import edu.project4.pojo.Point;
 import edu.project4.pojo.RGB;
 import edu.project4.transformation.AffineTransformation;
 import edu.project4.transformation.DiskTransformation;
-import edu.project4.transformation.HeartTransformation;
 import edu.project4.transformation.ITransformation;
-import edu.project4.transformation.SinusoidalTransformation;
 import edu.project4.util.Randomizer;
-
 import java.util.ArrayList;
 import java.util.Random;
 
+@SuppressWarnings("MagicNumber")
 public class FractalFlameRenderer implements IFractalFlameRenderer {
     private final Random randomizer = new Random();
     private final ArrayList<AffineTransformation> affineTransformations = new ArrayList<>();
@@ -35,9 +33,9 @@ public class FractalFlameRenderer implements IFractalFlameRenderer {
         for (int sample = 0; sample < samples; ++sample) {
             double x = Randomizer.nextDouble(xMin, xMax);
             double y = Randomizer.nextDouble(yMin, yMax);
-            Point P = new Point(x, y);
+            Point p = new Point(x, y);
 
-            iteratePoint(image, P, iterationsPerSample);
+            iteratePoint(image, p, iterationsPerSample);
         }
     }
 
@@ -52,14 +50,14 @@ public class FractalFlameRenderer implements IFractalFlameRenderer {
 
                 Point finalP = nonLinealTransformation.apply(p);
 
-                double Xf = finalP.x();
-                double Yf = finalP.y();
+                double xf = finalP.x();
+                double yf = finalP.y();
 
-                int newX = width - (int) (((xMax - Xf) / (xMax - xMin)) * width);
-                int newY = height - (int) (((yMax - Yf) / (yMax - yMin)) * height);
+                int newX = width - (int) (((xMax - xf) / (xMax - xMin)) * width);
+                int newY = height - (int) (((yMax - yf) / (yMax - yMin)) * height);
 
-                if (step < 0 || Xf < xMin || Xf > xMax
-                    || Yf < yMin || Yf > yMax
+                if (step < 0 || xf < xMin || xf > xMax
+                    || yf < yMin || yf > yMax
                     || newX >= width || newY >= height) {
                     continue;
                 }

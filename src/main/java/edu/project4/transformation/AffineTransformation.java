@@ -3,9 +3,9 @@ package edu.project4.transformation;
 import edu.project4.pojo.Coefficients;
 import edu.project4.pojo.Point;
 import edu.project4.pojo.RGB;
-
 import java.util.Random;
 
+@SuppressWarnings("MagicNumber")
 public class AffineTransformation implements ITransformation {
     Random randomGenerator = new Random();
     Coefficients cf = new Coefficients();

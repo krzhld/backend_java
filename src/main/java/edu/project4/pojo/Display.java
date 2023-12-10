@@ -1,12 +1,17 @@
 package edu.project4.pojo;
 
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import javax.imageio.ImageIO;
 
+@SuppressWarnings("MagicNumber")
 public class Display {
+    private Display() {
+
+    }
+
     public static void createImage(FractalImage image, String path, String name, ImageFormat imageFormat) {
         int height = image.height;
         int width = image.width;

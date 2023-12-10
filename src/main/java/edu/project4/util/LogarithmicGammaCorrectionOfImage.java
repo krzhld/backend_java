@@ -3,6 +3,7 @@ package edu.project4.util;
 import edu.project4.pojo.FractalImage;
 import edu.project4.pojo.Pixel;
 
+@SuppressWarnings("MagicNumber")
 public class LogarithmicGammaCorrectionOfImage implements ImageProcessor {
     @Override
     public void process(FractalImage image) {
